@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: gateway-dev
+  redis:
+    database: 0
+    port: 6379
+    host: localhost
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:29060/rsa/publicKey'
+  cloud:
+    nacos:
+      discovery:
+        server-addr: dev:8848
+      config:
+        server-addr: dev:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: user
+          uri: http://localhost:29060
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - StripPrefix=2
+        - id: goods
+          uri: http://localhost:22334
+          predicates:
+            - Path=/api/goods/**
+          filters:
+            - StripPrefix=2
+        - id: publish
+          uri: http://localhost:22335
+          predicates:
+            - Path=/api/publish/**
+          filters:
+            - StripPrefix=2
+swagger:
+  enable: true

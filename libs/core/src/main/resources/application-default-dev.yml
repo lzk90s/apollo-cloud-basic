@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:mysql://dev:42306/${spring.application.name}?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  redis:
+    url: redis://localhost:6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: dev:8848
+      config:
+        server-addr: dev:8848
+
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+  mapper-locations: classpath:mapper/*.xml
+  global-config:
+    logic-not-delete-value: 0
+    field-strategy: 2
+    logic-delete-value: -1
+    db-column-underline: true
+    refresh-mapper: true
+    id-type: 0
+
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

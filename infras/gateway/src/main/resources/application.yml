@@ -1,0 +1,109 @@
+server:
+  port: 28888
+
+apiPrefix: /api
+
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      enabled: true
+      max-request-size: 100MB
+      max-file-size: 100MB
+      file-size-threshold: 0
+  redis:
+    database: 0
+    port: 6379
+    host: redis
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://uaa:29060/rsa/publicKey'
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    nacos:
+      discovery:
+        server-addr: registry:8848
+      config:
+        server-addr: registry:8848
+    gateway:
+      globalcors:
+        corsConfigurations:
+          - '[/websocket/**]':
+              allowedMethods: "*"
+              allowedHeaders: "*"
+          - '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"
+      routes:
+        - id: config
+          uri: http://registry:8848
+          predicates:
+            - Path=/api/config/**
+          filters:
+            - StripPrefix=2
+        - id: cookies-pool
+          uri: http://cookies-pool:5000
+          predicates:
+            - Path=/api/cookies-pool/**
+          filters:
+            - StripPrefix=2
+        - id: recognize
+          uri: http://recognize:33024
+          predicates:
+            - Path=/api/recognize/**
+          filters:
+            - StripPrefix=2
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+          predicates:
+            - Path='${apiPrefix}/' + serviceId + '/**'
+          filters:
+            - StripPrefix=2
+      httpclient:
+        pool:
+          max-connections: ${MAX_CONNECTIONS:500}
+        connect-timeout: ${CONNECT_TIMEOUT:20000}
+        response-timeout: ${RESPONSE_TIMEOUT:50s}
+      metrics:
+        enabled: true
+
+
+###actuator监控点 start####
+endpoints:
+  health:
+    sensitive: false
+    enabled: true
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+ribbon:
+  ReadTimeout: 50000
+  ConnectTimeout: 20000
+
+secure:
+  ignore:
+    urls:
+      - /actuator/**
+      - /api/uaa/oauth/token
+      - /api/*/internal/**
+      - /api/*/tasks/**
+      - /api/haipproxy/**
+      - /api/cookies-pool/**

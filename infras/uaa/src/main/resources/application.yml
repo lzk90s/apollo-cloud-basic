@@ -1,0 +1,14 @@
+server:
+  port: 29060
+  max-http-header-size: 4048576
+
+spring:
+  profiles:
+    active: dev
+    include: default-${spring.profiles.active}
+  application:
+    name: uaa
+
+#tenant:
+#  exclusionTable:
+#    - t_user

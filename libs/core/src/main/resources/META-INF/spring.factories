@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=pers.kun.core.config.BeanConfiguration, \
+pers.kun.core.config.MybatisPlusConfig
