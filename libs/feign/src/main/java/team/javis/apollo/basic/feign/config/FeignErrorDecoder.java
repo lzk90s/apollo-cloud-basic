@@ -1,4 +1,4 @@
-package team.javis.apollo.basic.feign.config;
+package team.uni.apollo.basic.feign.config;
 
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
-import team.javis.apollo.basic.core.exception.BizException;
-import team.javis.apollo.basic.core.rest.R;
+import team.uni.apollo.basic.core.exception.BizException;
+import team.uni.apollo.basic.core.rest.R;
 
 import java.io.IOException;
 

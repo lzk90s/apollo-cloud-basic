@@ -1,9 +1,9 @@
-package team.javis.apollo.basic.feign.interceptor;
+package team.uni.apollo.basic.feign.interceptor;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import team.javis.apollo.basic.core.auth.UserConst;
-import team.javis.apollo.basic.core.auth.UserProvider;
+import team.uni.apollo.basic.core.auth.UserConst;
+import team.uni.apollo.basic.core.auth.UserProvider;
 
 /**
  * @author : qihang.liu

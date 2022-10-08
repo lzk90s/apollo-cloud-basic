@@ -1,8 +1,8 @@
-package team.javis.apollo.basic.feign.config;
+package team.uni.apollo.basic.feign.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import team.javis.apollo.basic.feign.interceptor.FeignRequestInterceptor;
+import team.uni.apollo.basic.feign.interceptor.FeignRequestInterceptor;
 
 /**
  * @author : qihang.liu

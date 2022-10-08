@@ -1,14 +1,14 @@
-package team.javis.apollo.basic.feign.config;
+package team.uni.apollo.basic.feign.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.core.annotation.Order;
-import team.javis.apollo.basic.core.auth.UserProvider;
-import team.javis.apollo.basic.core.exception.BizException;
-import team.javis.apollo.basic.core.exception.BizResultCode;
-import team.javis.apollo.basic.core.util.JsonUtil;
+import team.uni.apollo.basic.core.auth.UserProvider;
+import team.uni.apollo.basic.core.exception.BizException;
+import team.uni.apollo.basic.core.exception.BizResultCode;
+import team.uni.apollo.basic.core.util.JsonUtil;
 
 @Aspect
 @Order(1)
