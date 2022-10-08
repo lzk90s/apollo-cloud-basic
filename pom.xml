@@ -27,6 +27,9 @@
         <module>dependencies</module>
         <module>infras</module>
         <module>libs</module>
+        <module>modules</module>
+        <module>infras/auth</module>
+        <module>infras/auth/auth-starter</module>
     </modules>
 
     <dependencyManagement>

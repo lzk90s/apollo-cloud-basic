@@ -3,23 +3,25 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>infras</artifactId>
+        <artifactId>modules</artifactId>
         <groupId>team.uni.apollo.basic</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>dbms</artifactId>
 
-    <artifactId>system</artifactId>
-    <packaging>pom</packaging>
+    <properties>
+        <dockerfile.dir>.</dockerfile.dir>
+    </properties>
 
-    <modules>
-        <module>system-client</module>
-        <module>system-dal</module>
-        <module>system-facade</module>
-        <module>system-integration</module>
-        <module>system-service</module>
-        <module>system-web</module>
-        <module>system-starter</module>
-    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
