@@ -1,7 +1,6 @@
 server:
   port: 28888
 
-apiPrefix: /api
 
 spring:
   application:
@@ -48,29 +47,29 @@ spring:
         - id: config
           uri: http://registry:8848
           predicates:
-            - Path=/api/config/**
+            - Path=/config/**
           filters:
-            - StripPrefix=2
+            - StripPrefix=1
         - id: cookies-pool
           uri: http://cookies-pool:5000
           predicates:
-            - Path=/api/cookies-pool/**
+            - Path=/cookies-pool/**
           filters:
-            - StripPrefix=2
+            - StripPrefix=1
         - id: recognize
           uri: http://recognize:33024
           predicates:
-            - Path=/api/recognize/**
+            - Path=/recognize/**
           filters:
-            - StripPrefix=2
+            - StripPrefix=1
       discovery:
         locator:
           lowerCaseServiceId: true
           enabled: true
           predicates:
-            - Path='${apiPrefix}/' + serviceId + '/**'
+            - Path= serviceId + '/**'
           filters:
-            - StripPrefix=2
+            - StripPrefix=1
       httpclient:
         pool:
           max-connections: ${MAX_CONNECTIONS:500}

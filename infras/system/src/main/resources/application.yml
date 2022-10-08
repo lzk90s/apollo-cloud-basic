@@ -7,7 +7,7 @@ spring:
     active: dev
     include: default-${spring.profiles.active}
   application:
-    name: uaa
+    name: system
 
 #tenant:
 #  exclusionTable:
